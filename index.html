@@ -8,12 +8,13 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=DM+Sans:wght@400;500;600;700&family=Great+Vibes&display=swap" rel="stylesheet">
 
 <style>
 
 /* =========================================================
-   BASIC
+   RESET
 ========================================================= */
 
 *{
@@ -27,15 +28,15 @@ html{
 }
 
 body{
-    background:#f5d1d4;
-    color:#5d303d;
-    font-family:"DM Sans",sans-serif;
     overflow-x:hidden;
+    background:#f8dfe0;
+    color:#663643;
+    font-family:"DM Sans",sans-serif;
 }
 
 
 /* =========================================================
-   MAIN BACKGROUND
+   PAGE
 ========================================================= */
 
 .page{
@@ -43,10 +44,10 @@ body{
     min-height:100vh;
     overflow:hidden;
 
-    background-image:
+    background:
         linear-gradient(
-            rgba(255,220,224,.12),
-            rgba(255,220,224,.12)
+            rgba(255,224,228,.12),
+            rgba(255,224,228,.12)
         ),
         url("anniversary-bg.png");
 
@@ -55,81 +56,81 @@ body{
         100% auto;
 
     background-position:
-        center,
-        top center;
+        center top,
+        center top;
 
     background-attachment:
         fixed,
         fixed;
 }
 
-.page::before{
+.page:after{
     content:"";
+
     position:fixed;
     inset:0;
 
     pointer-events:none;
 
-    z-index:1;
+    z-index:2;
 
     background:
         radial-gradient(
-            circle at 15% 15%,
+            circle at 20% 10%,
             rgba(255,255,255,.55),
             transparent 20%
         ),
         radial-gradient(
-            circle at 90% 50%,
-            rgba(255,155,185,.22),
-            transparent 25%
-        ),
-        radial-gradient(
-            circle at 50% 100%,
-            rgba(255,190,205,.28),
-            transparent 35%
+            circle at 85% 35%,
+            rgba(255,150,180,.18),
+            transparent 28%
         );
 }
 
 
 /* =========================================================
-   NAVBAR
+   NAV
 ========================================================= */
 
 .nav{
     position:fixed;
-    top:15px;
+
+    top:18px;
     left:50%;
+
     transform:translateX(-50%);
 
-    z-index:2000;
+    z-index:9999;
 
     display:flex;
     align-items:center;
-    gap:3px;
 
     padding:7px;
 
-    border:1px solid rgba(130,65,82,.3);
-    border-radius:999px;
+    gap:3px;
+
+    border-radius:50px;
+
+    border:1px solid rgba(130,65,82,.25);
 
     background:
-        rgba(255,241,232,.9);
+        rgba(255,244,238,.88);
 
-    backdrop-filter:blur(16px);
+    backdrop-filter:blur(18px);
 
     box-shadow:
-        0 12px 35px rgba(91,37,53,.18);
+        0 12px 35px rgba(100,40,55,.18);
 }
 
 .nav button{
     border:none;
     background:transparent;
 
-    color:#743748;
+    padding:9px 15px;
 
-    padding:8px 13px;
+    border-radius:50px;
 
-    border-radius:999px;
+    color:#79394a;
 
     cursor:pointer;
 
@@ -141,32 +142,32 @@ body{
 }
 
 .nav button:hover{
-    background:#d98799;
+    background:#d67e94;
     color:white;
 
-    transform:
-        translateY(-2px)
-        scale(1.05);
+    transform:translateY(-2px);
 }
 
 
 /* =========================================================
-   FLOATING PARTICLES
+   DECORATIVE FLOATING PARTICLES
 ========================================================= */
 
 #floating{
     position:fixed;
     inset:0;
 
-    z-index:10;
-
     pointer-events:none;
+
     overflow:hidden;
+
+    z-index:20;
 }
 
 .float{
     position:absolute;
-    bottom:-60px;
+
+    bottom:-50px;
 
     opacity:0;
 
@@ -175,7 +176,7 @@ body{
 
     filter:
         drop-shadow(
-            0 5px 7px rgba(80,30,45,.15)
+            0 4px 5px rgba(100,35,50,.15)
         );
 }
 
@@ -188,7 +189,7 @@ body{
             translateY(0)
             translateX(0)
             rotate(0)
-            scale(.6);
+            scale(.5);
     }
 
     15%{
@@ -212,305 +213,6 @@ body{
 
 
 /* =========================================================
-   FLOATING KITTENS
-========================================================= */
-
-.kitten{
-    position:fixed;
-
-    width:105px;
-    height:115px;
-
-    z-index:25;
-
-    pointer-events:none;
-
-    filter:
-        drop-shadow(
-            0 13px 12px rgba(80,30,44,.18)
-        );
-
-    animation:
-        kittenFloat var(--speed) ease-in-out infinite;
-}
-
-@keyframes kittenFloat{
-
-    0%,100%{
-        transform:
-            translateY(0)
-            rotate(-4deg);
-    }
-
-    50%{
-        transform:
-            translateY(-25px)
-            rotate(5deg);
-    }
-}
-
-
-/* kitten body/head */
-
-.cat-head{
-    position:absolute;
-
-    left:18px;
-    top:25px;
-
-    width:70px;
-    height:65px;
-
-    border:2px solid #b47784;
-
-    border-radius:
-        48% 48%
-        45% 45%;
-
-    background:
-        linear-gradient(
-            145deg,
-            #fffaf2,
-            #f4ddd7
-        );
-}
-
-
-/* ears */
-
-.cat-ear{
-    position:absolute;
-
-    width:32px;
-    height:32px;
-
-    top:7px;
-
-    background:#fff7ef;
-
-    border:2px solid #b47784;
-
-    transform:rotate(45deg);
-
-    z-index:-1;
-}
-
-.cat-ear.left{
-    left:18px;
-}
-
-.cat-ear.right{
-    right:18px;
-}
-
-.cat-ear::after{
-    content:"";
-
-    position:absolute;
-
-    width:16px;
-    height:16px;
-
-    left:6px;
-    top:6px;
-
-    background:#edabb5;
-
-    border-radius:50%;
-}
-
-
-/* eyes */
-
-.cat-eye{
-    position:absolute;
-
-    top:31px;
-
-    width:8px;
-    height:12px;
-
-    background:#4c2933;
-
-    border-radius:50%;
-}
-
-.cat-eye.left{
-    left:20px;
-}
-
-.cat-eye.right{
-    right:20px;
-}
-
-
-/* nose */
-
-.cat-nose{
-    position:absolute;
-
-    top:45px;
-    left:31px;
-
-    width:9px;
-    height:6px;
-
-    background:#d8758b;
-
-    border-radius:50%;
-}
-
-
-/* mouth */
-
-.cat-mouth{
-    position:absolute;
-
-    top:50px;
-    left:32px;
-
-    width:9px;
-    height:6px;
-
-    border-bottom:1px solid #713e4b;
-
-    border-radius:50%;
-}
-
-
-/* whiskers */
-
-.whisker{
-    position:absolute;
-
-    width:22px;
-    height:1px;
-
-    background:#b47784;
-
-    opacity:.65;
-}
-
-.w1{
-    left:-15px;
-    top:45px;
-    transform:rotate(8deg);
-}
-
-.w2{
-    left:-15px;
-    top:53px;
-    transform:rotate(-7deg);
-}
-
-.w3{
-    right:-15px;
-    top:45px;
-    transform:rotate(-8deg);
-}
-
-.w4{
-    right:-15px;
-    top:53px;
-    transform:rotate(7deg);
-}
-
-
-/* accessories */
-
-.cat-bow{
-    position:absolute;
-
-    right:0;
-    top:2px;
-
-    font-size:30px;
-
-    animation:
-        bowMove 2s ease-in-out infinite;
-}
-
-@keyframes bowMove{
-    50%{
-        transform:
-            rotate(10deg)
-            scale(1.08);
-    }
-}
-
-.cat-flower{
-    position:absolute;
-
-    left:0;
-    top:10px;
-
-    font-size:23px;
-}
-
-.cat-heart{
-    position:absolute;
-
-    right:6px;
-    bottom:5px;
-
-    font-size:18px;
-
-    animation:
-        pulse 1.6s infinite;
-}
-
-@keyframes pulse{
-    50%{
-        transform:scale(1.35);
-    }
-}
-
-
-/* kitten positions */
-
-.k1{
-    left:2%;
-    top:13%;
-    --speed:6s;
-}
-
-.k2{
-    right:1%;
-    top:21%;
-    --speed:7s;
-    transform:scale(.85);
-}
-
-.k3{
-    left:4%;
-    top:43%;
-    --speed:6.5s;
-    transform:scale(.75);
-}
-
-.k4{
-    right:3%;
-    top:46%;
-    --speed:7.5s;
-    transform:scale(.9);
-}
-
-.k5{
-    left:1%;
-    top:70%;
-    --speed:6.7s;
-    transform:scale(.82);
-}
-
-.k6{
-    right:1%;
-    top:73%;
-    --speed:7.2s;
-    transform:scale(.8);
-}
-
-
-/* =========================================================
    HERO
 ========================================================= */
 
@@ -518,24 +220,27 @@ body{
     min-height:100vh;
 
     position:relative;
+
     z-index:50;
 
     display:flex;
+
     align-items:center;
     justify-content:center;
 
     padding:
-        120px 18px
-        80px;
+        120px 20px
+        90px;
 }
 
 .hero-paper{
+
     position:relative;
 
-    width:min(730px,94%);
+    width:min(760px,94%);
 
     padding:
-        75px 35px
+        72px 35px
         65px;
 
     text-align:center;
@@ -543,64 +248,67 @@ body{
     background:
         linear-gradient(
             145deg,
-            rgba(255,247,238,.96),
-            rgba(250,220,214,.94)
+            rgba(255,250,244,.97),
+            rgba(250,220,216,.96)
         );
 
     border:
-        2px solid rgba(180,103,122,.4);
+        2px solid rgba(185,108,127,.4);
 
-    border-radius:12px;
+    border-radius:10px;
 
     box-shadow:
-        0 35px 80px rgba(80,30,45,.2),
-        inset 0 0 50px rgba(255,255,255,.55);
+        0 35px 90px rgba(86,32,48,.22),
+        inset 0 0 45px rgba(255,255,255,.65);
 
-    transform:rotate(-.5deg);
+    transform:rotate(-.7deg);
 
     overflow:hidden;
 }
 
-.hero-paper::before{
+.hero-paper:before{
+
     content:"";
 
     position:absolute;
-    inset:13px;
+
+    inset:14px;
 
     border:
-        1px dashed rgba(180,104,124,.5);
+        1px dashed rgba(180,103,123,.5);
 
-    border-radius:9px;
+    border-radius:8px;
+
+    pointer-events:none;
 }
 
-.hero-paper::after{
+.hero-paper:after{
+
     content:"❦  ❦  ❦  ❦  ❦";
 
     position:absolute;
+
     bottom:10px;
+
     left:0;
     right:0;
 
-    color:#cb8396;
+    color:#ca8297;
 
-    letter-spacing:8px;
+    letter-spacing:9px;
 }
 
-.ribbon{
-    font-size:65px;
-
-    position:absolute;
-
-    top:-5px;
-    left:50%;
-
-    transform:translateX(-50%);
+.crown{
+    font-size:48px;
 }
 
 .hero-small{
-    margin-top:12px;
 
-    color:#a05368;
+    margin-top:8px;
+
+    color:#a6536b;
+
+    text-transform:uppercase;
 
     letter-spacing:5px;
 
@@ -610,25 +318,27 @@ body{
 }
 
 .hero h1{
-    margin-top:24px;
+
+    margin-top:20px;
 
     font-family:"Great Vibes",cursive;
 
     font-size:
-        clamp(72px,15vw,145px);
+        clamp(75px,14vw,145px);
 
-    line-height:.85;
+    line-height:.9;
 
-    color:#923d58;
+    color:#913c56;
 
     text-shadow:
-        0 6px 15px rgba(110,40,60,.12);
+        0 5px 12px rgba(100,35,50,.12);
 }
 
 .hero h2{
+
     margin-top:20px;
 
-    color:#713343;
+    color:#753748;
 
     font-family:"Cormorant Garamond",serif;
 
@@ -639,13 +349,14 @@ body{
 }
 
 .hero-description{
+
     max-width:550px;
 
     margin:
-        20px auto
+        18px auto
         28px;
 
-    color:#714250;
+    color:#714252;
 
     font-family:"Cormorant Garamond",serif;
 
@@ -660,12 +371,13 @@ body{
 ========================================================= */
 
 .btn{
+
     border:none;
 
     padding:
-        14px 25px;
+        13px 26px;
 
-    border-radius:999px;
+    border-radius:50px;
 
     cursor:pointer;
 
@@ -680,29 +392,25 @@ body{
     background:
         linear-gradient(
             180deg,
-            #edaab6,
-            #c76d83
+            #eea9b7,
+            #c96d83
         );
 
     box-shadow:
-        0 12px 25px rgba(117,44,63,.22),
-        inset 0 1px rgba(255,255,255,.5);
+        0 12px 25px rgba(115,40,60,.22),
+        inset 0 1px rgba(255,255,255,.55);
 
     transition:.35s;
 }
 
 .btn:hover{
+
     transform:
         translateY(-4px)
         scale(1.04);
 
     box-shadow:
-        0 18px 35px rgba(117,44,63,.3);
-}
-
-.btn.light{
-    background:#fff1e7;
-    color:#873d53;
+        0 18px 35px rgba(115,40,60,.3);
 }
 
 
@@ -711,25 +419,32 @@ body{
 ========================================================= */
 
 section{
+
     position:relative;
+
     z-index:50;
 
     padding:
-        100px 15px;
+        80px 15px;
 }
 
 .container{
-    width:min(1050px,100%);
+
+    width:min(1080px,100%);
+
     margin:auto;
 }
 
 .heading{
+
     text-align:center;
-    margin-bottom:45px;
+
+    margin-bottom:35px;
 }
 
 .heading small{
-    color:#a35368;
+
+    color:#a45469;
 
     text-transform:uppercase;
 
@@ -741,17 +456,19 @@ section{
 }
 
 .heading h2{
-    margin-top:7px;
 
-    color:#81384e;
+    margin-top:5px;
+
+    color:#83384e;
 
     font-family:"Great Vibes",cursive;
 
     font-size:
-        clamp(58px,10vw,90px);
+        clamp(58px,10vw,92px);
 }
 
 .heading p{
+
     max-width:620px;
 
     margin:8px auto;
@@ -765,36 +482,41 @@ section{
 
 
 /* =========================================================
-   LOVE LETTER
+   LETTER — MAIN SCRAPBOOK PAPER
 ========================================================= */
 
 .letter{
+
     position:relative;
 
     padding:
-        75px
-        clamp(25px,7vw,75px);
+        65px
+        clamp(25px,7vw,80px);
 
     background:
+
         linear-gradient(
             145deg,
-            rgba(255,248,239,.98),
+            rgba(255,249,240,.98),
             rgba(249,220,213,.97)
         );
 
     border:
-        2px solid rgba(184,107,125,.4);
+        2px solid rgba(183,106,125,.42);
 
-    border-radius:8px;
+    border-radius:7px;
 
     box-shadow:
-        0 35px 80px rgba(84,32,47,.19),
-        inset 0 0 50px rgba(255,255,255,.6);
+        0 30px 80px rgba(84,32,47,.2),
+        inset 0 0 55px rgba(255,255,255,.6);
 
-    transform:rotate(.35deg);
+    transform:rotate(.4deg);
+
+    overflow:hidden;
 }
 
-.letter::before{
+.letter:before{
+
     content:"";
 
     position:absolute;
@@ -802,12 +524,13 @@ section{
     inset:12px;
 
     border:
-        1px solid rgba(182,104,123,.45);
+        1px solid rgba(181,105,124,.45);
 
     pointer-events:none;
 }
 
-.letter::after{
+.letter:after{
+
     content:"";
 
     position:absolute;
@@ -815,18 +538,20 @@ section{
     inset:20px;
 
     border:
-        1px dashed rgba(190,115,133,.35);
+        1px dashed rgba(188,110,129,.32);
 
     pointer-events:none;
 }
 
 .letter-top{
+
     position:relative;
+
     z-index:2;
 
     text-align:center;
 
-    color:#a35a6d;
+    color:#a0566b;
 
     text-transform:uppercase;
 
@@ -836,41 +561,48 @@ section{
 }
 
 .letter h3{
+
     position:relative;
+
     z-index:2;
 
     text-align:center;
 
     margin:
-        15px 0 30px;
+        12px 0
+        30px;
 
-    color:#8f3e56;
+    color:#8d3c55;
 
     font-family:"Great Vibes",cursive;
 
     font-size:
-        clamp(55px,9vw,80px);
+        clamp(55px,9vw,82px);
 }
 
 .letter-content{
+
     position:relative;
+
     z-index:2;
 
-    color:#55303b;
+    color:#59313c;
 
     font-family:"Cormorant Garamond",serif;
 
     font-size:
-        clamp(19px,2.2vw,23px);
+        clamp(18px,2.2vw,22px);
 
     line-height:1.72;
 }
 
 .letter-content p{
+
     margin-bottom:24px;
 }
 
 .letter-content p:first-child::first-letter{
+
     float:left;
 
     font-size:72px;
@@ -879,12 +611,16 @@ section{
 
     margin-right:8px;
 
-    color:#c56e83;
+    color:#c66f83;
 }
 
 .signature{
+
     position:relative;
+
     z-index:2;
+
+    margin-top:25px;
 
     text-align:right;
 
@@ -897,10 +633,11 @@ section{
 
 
 /* =========================================================
-   KITTEN CARDS
+   LITTLE SCRAPBOOK NOTES
 ========================================================= */
 
-.kitty-grid{
+.note-grid{
+
     display:grid;
 
     grid-template-columns:
@@ -909,119 +646,129 @@ section{
     gap:24px;
 }
 
-.note-card{
+.note{
+
     position:relative;
 
-    min-height:350px;
+    min-height:320px;
 
     padding:
-        30px 20px;
+        38px 25px;
 
     text-align:center;
-
-    cursor:pointer;
 
     background:
         linear-gradient(
             145deg,
-            rgba(255,247,239,.97),
-            rgba(248,215,211,.96)
+            rgba(255,248,239,.98),
+            rgba(248,216,212,.96)
         );
 
     border:
-        2px solid rgba(184,108,126,.38);
-
-    border-radius:13px;
+        2px solid rgba(184,108,126,.35);
 
     box-shadow:
-        0 25px 60px rgba(86,34,49,.17);
+        0 25px 55px rgba(86,34,49,.17);
 
-    transition:.45s;
+    transition:.4s;
+
+    overflow:hidden;
 }
 
-.note-card:nth-child(1){
-    transform:rotate(-1deg);
+.note:nth-child(1){
+    transform:rotate(-1.5deg);
 }
 
-.note-card:nth-child(2){
+.note:nth-child(2){
     transform:rotate(.8deg);
 }
 
-.note-card:nth-child(3){
-    transform:rotate(-.6deg);
+.note:nth-child(3){
+    transform:rotate(-.8deg);
 }
 
-.note-card:hover{
+.note:hover{
+
     transform:
-        translateY(-12px)
-        rotate(0)
-        scale(1.025);
-
-    box-shadow:
-        0 35px 75px rgba(86,34,49,.24);
+        translateY(-10px)
+        rotate(0deg)
+        scale(1.02);
 }
 
-.mini-cat{
-    position:relative;
+.note:before{
 
-    width:115px;
-    height:115px;
+    content:"🌸";
 
-    margin:
-        5px auto
-        12px;
+    position:absolute;
+
+    top:12px;
+    left:15px;
+
+    font-size:22px;
+}
+
+.note:after{
+
+    content:"❦";
+
+    position:absolute;
+
+    bottom:12px;
+    right:18px;
+
+    color:#ce8498;
+
+    font-size:30px;
+}
+
+.note-icon{
+
+    font-size:65px;
+
+    margin-bottom:15px;
 
     animation:
-        miniFloat 3.5s ease-in-out infinite;
+        gentleFloat 3s ease-in-out infinite;
 }
 
-@keyframes miniFloat{
+@keyframes gentleFloat{
+
     50%{
         transform:
-            translateY(-8px);
+            translateY(-8px)
+            rotate(3deg);
     }
 }
 
-.note-card h3{
-    color:#873b51;
+.note h3{
+
+    color:#853b51;
 
     font-family:"Great Vibes",cursive;
 
-    font-size:38px;
+    font-size:40px;
 }
 
-.note-card p{
+.note p{
+
     margin-top:10px;
 
-    color:#714150;
+    color:#704050;
 
     font-family:"Cormorant Garamond",serif;
 
-    font-size:18px;
+    font-size:19px;
 
     line-height:1.5;
 }
 
-.tap{
-    display:block;
-
-    margin-top:16px;
-
-    color:#b05870;
-
-    text-transform:uppercase;
-
-    letter-spacing:3px;
-
-    font-size:9px;
-}
-
 
 /* =========================================================
-   LOVE BUTTONS
+   LOVE SECTION
 ========================================================= */
 
 .love-grid{
+
     display:grid;
 
     grid-template-columns:
@@ -1031,9 +778,10 @@ section{
 }
 
 .love-card{
+
     position:relative;
 
-    min-height:320px;
+    min-height:310px;
 
     padding:35px 22px;
 
@@ -1047,12 +795,12 @@ section{
     text-align:center;
 
     background:
-        rgba(255,239,229,.96);
+        rgba(255,241,231,.97);
 
     border:
-        2px solid rgba(184,107,125,.4);
+        2px solid rgba(184,107,125,.38);
 
-    border-radius:18px;
+    border-radius:10px;
 
     box-shadow:
         0 25px 60px rgba(83,32,48,.17);
@@ -1060,50 +808,43 @@ section{
     overflow:hidden;
 }
 
-.love-card::before{
+.love-card:before{
+
     content:"❦";
 
     position:absolute;
 
     top:10px;
-    left:15px;
+    left:14px;
 
-    color:#d18a9c;
+    color:#d08a9d;
 
     font-size:30px;
 }
 
-.love-card::after{
+.love-card:after{
+
     content:"❧";
 
     position:absolute;
 
-    bottom:8px;
     right:15px;
+    bottom:8px;
 
-    color:#d18a9c;
+    color:#d08a9d;
 
     font-size:30px;
 }
 
 .love-icon{
-    font-size:70px;
 
-    margin-bottom:13px;
+    font-size:68px;
 
-    animation:
-        iconFloat 3s ease-in-out infinite;
-}
-
-@keyframes iconFloat{
-    50%{
-        transform:
-            translateY(-10px)
-            rotate(-5deg);
-    }
+    margin-bottom:10px;
 }
 
 .love-card h3{
+
     color:#853b51;
 
     font-family:"Great Vibes",cursive;
@@ -1112,6 +853,7 @@ section{
 }
 
 .love-card p{
+
     max-width:270px;
 
     margin:
@@ -1133,26 +875,28 @@ section{
 ========================================================= */
 
 .meter-box{
-    margin-top:30px;
+
+    margin-top:25px;
 
     padding:
-        50px 20px;
+        45px 20px;
 
     text-align:center;
 
     background:
-        rgba(255,239,229,.97);
+        rgba(255,240,229,.97);
 
     border:
         2px solid rgba(185,109,127,.4);
 
-    border-radius:17px;
+    border-radius:12px;
 
     box-shadow:
         0 25px 60px rgba(82,31,46,.17);
 }
 
 .meter-title{
+
     color:#893c53;
 
     font-family:"Great Vibes",cursive;
@@ -1161,35 +905,38 @@ section{
 }
 
 .meter-number{
+
     color:#923f57;
 
     font-family:"Great Vibes",cursive;
 
-    font-size:78px;
+    font-size:75px;
 }
 
 .meter{
+
     width:min(650px,90%);
 
     height:22px;
 
     margin:
-        15px auto
+        12px auto
         25px;
 
     padding:3px;
 
-    border-radius:999px;
+    border-radius:50px;
 
-    background:#edc2c6;
+    background:#edc3c7;
 }
 
 .meter-fill{
+
     width:0%;
 
     height:100%;
 
-    border-radius:999px;
+    border-radius:50px;
 
     background:
         linear-gradient(
@@ -1210,9 +957,10 @@ section{
 ========================================================= */
 
 .flower-area{
+
     position:relative;
 
-    min-height:400px;
+    min-height:420px;
 
     display:flex;
 
@@ -1221,15 +969,17 @@ section{
 
     flex-direction:column;
 
+    border-radius:15px;
+
     overflow:hidden;
 
-    border-radius:25px;
-
     background:
+
         linear-gradient(
-            rgba(91,34,51,.82),
-            rgba(91,34,51,.82)
+            rgba(107,47,66,.74),
+            rgba(107,47,66,.74)
         ),
+
         url("anniversary-bg.png");
 
     background-size:cover;
@@ -1239,25 +989,27 @@ section{
 }
 
 .flower{
+
     position:relative;
 
-    width:140px;
-    height:140px;
+    width:150px;
+    height:150px;
+
+    margin-bottom:30px;
 
     transform:
         scale(.1)
-        rotate(-25deg);
+        rotate(-30deg);
 
     opacity:0;
 
     transition:
         1.5s
         cubic-bezier(.2,.8,.2,1);
-
-    margin-bottom:25px;
 }
 
 .flower.bloom{
+
     transform:
         scale(1)
         rotate(0);
@@ -1266,13 +1018,14 @@ section{
 }
 
 .petal{
+
     position:absolute;
 
-    left:47px;
+    left:50px;
     top:3px;
 
     width:48px;
-    height:82px;
+    height:85px;
 
     border-radius:
         55% 55%
@@ -1281,7 +1034,7 @@ section{
     background:
         radial-gradient(
             circle at 40% 20%,
-            #fff1f2,
+            #fff2f3,
             #df8298 70%
         );
 
@@ -1289,42 +1042,26 @@ section{
         50% 90%;
 }
 
-.petal:nth-child(1){
-    transform:rotate(0);
-}
-
-.petal:nth-child(2){
-    transform:rotate(60deg);
-}
-
-.petal:nth-child(3){
-    transform:rotate(120deg);
-}
-
-.petal:nth-child(4){
-    transform:rotate(180deg);
-}
-
-.petal:nth-child(5){
-    transform:rotate(240deg);
-}
-
-.petal:nth-child(6){
-    transform:rotate(300deg);
-}
+.petal:nth-child(1){transform:rotate(0);}
+.petal:nth-child(2){transform:rotate(60deg);}
+.petal:nth-child(3){transform:rotate(120deg);}
+.petal:nth-child(4){transform:rotate(180deg);}
+.petal:nth-child(5){transform:rotate(240deg);}
+.petal:nth-child(6){transform:rotate(300deg);}
 
 .flower-center{
+
     position:absolute;
 
-    left:51px;
-    top:52px;
+    left:56px;
+    top:55px;
 
     width:38px;
     height:38px;
 
     border-radius:50%;
 
-    background:#e5b95f;
+    background:#e6ba5e;
 
     box-shadow:
         0 0 25px rgba(255,210,110,.8);
@@ -1336,7 +1073,8 @@ section{
 ========================================================= */
 
 .secret{
-    max-width:800px;
+
+    max-width:820px;
 
     margin:auto;
 
@@ -1346,18 +1084,19 @@ section{
     text-align:center;
 
     background:
-        rgba(255,239,229,.97);
+        rgba(255,240,230,.97);
 
     border:
         2px solid rgba(185,108,126,.4);
 
-    border-radius:16px;
+    border-radius:12px;
 
     box-shadow:
         0 30px 70px rgba(85,32,48,.18);
 }
 
 .envelope{
+
     position:relative;
 
     width:230px;
@@ -1372,12 +1111,14 @@ section{
 }
 
 .envelope:hover{
+
     transform:
         translateY(-8px)
         rotate(-2deg);
 }
 
 .env-body{
+
     position:absolute;
 
     inset:0;
@@ -1399,6 +1140,7 @@ section{
 }
 
 .env-flap{
+
     position:absolute;
 
     top:0;
@@ -1424,11 +1166,13 @@ section{
 }
 
 .envelope.open .env-flap{
+
     transform:
         rotateX(180deg);
 }
 
 .env-heart{
+
     position:absolute;
 
     top:50%;
@@ -1448,11 +1192,12 @@ section{
 ========================================================= */
 
 .modal{
+
     position:fixed;
 
     inset:0;
 
-    z-index:5000;
+    z-index:10000;
 
     display:flex;
 
@@ -1462,7 +1207,7 @@ section{
     padding:20px;
 
     background:
-        rgba(68,24,39,.68);
+        rgba(69,24,40,.68);
 
     backdrop-filter:blur(13px);
 
@@ -1474,32 +1219,38 @@ section{
 }
 
 .modal.show{
+
     opacity:1;
 
     pointer-events:auto;
 }
 
 .modal-card{
+
     position:relative;
 
-    width:min(650px,100%);
+    width:min(680px,100%);
+
+    max-height:85vh;
+
+    overflow:auto;
 
     padding:
-        60px 30px;
+        55px 30px;
 
     text-align:center;
 
     background:
         linear-gradient(
             145deg,
-            #fff6ec,
-            #f8dad8
+            #fff7ed,
+            #f8dada
         );
 
     border:
         2px solid #c77d91;
 
-    border-radius:15px;
+    border-radius:12px;
 
     box-shadow:
         0 40px 100px rgba(25,7,15,.4);
@@ -1512,38 +1263,42 @@ section{
 }
 
 .modal.show .modal-card{
+
     transform:none;
 }
 
 .modal-card h3{
+
     color:#913e57;
 
     font-family:"Great Vibes",cursive;
 
-    font-size:65px;
+    font-size:60px;
 }
 
 .modal-card p{
+
     margin:
         20px auto
         25px;
 
-    max-width:530px;
+    max-width:550px;
 
     color:#5d303b;
 
     font-family:"Cormorant Garamond",serif;
 
-    font-size:22px;
+    font-size:21px;
 
     line-height:1.6;
 }
 
 .close{
+
     position:absolute;
 
+    top:8px;
     right:16px;
-    top:10px;
 
     border:none;
 
@@ -1562,11 +1317,12 @@ section{
 ========================================================= */
 
 .hug-screen{
+
     position:fixed;
 
     inset:0;
 
-    z-index:4500;
+    z-index:9000;
 
     display:flex;
 
@@ -1574,7 +1330,7 @@ section{
     justify-content:center;
 
     background:
-        rgba(250,196,205,.5);
+        rgba(250,196,205,.55);
 
     backdrop-filter:blur(5px);
 
@@ -1584,11 +1340,13 @@ section{
 }
 
 .hug-screen.show{
+
     animation:
         hugScreen 1.7s forwards;
 }
 
 .hug-big{
+
     font-size:
         clamp(100px,30vw,270px);
 
@@ -1598,21 +1356,10 @@ section{
 
 @keyframes hugScreen{
 
-    0%{
-        opacity:0;
-    }
-
-    20%{
-        opacity:1;
-    }
-
-    75%{
-        opacity:1;
-    }
-
-    100%{
-        opacity:0;
-    }
+    0%{opacity:0;}
+    20%{opacity:1;}
+    75%{opacity:1;}
+    100%{opacity:0;}
 }
 
 @keyframes hugPop{
@@ -1640,58 +1387,14 @@ section{
 
 
 /* =========================================================
-   KISS
-========================================================= */
-
-.kiss{
-    position:fixed;
-
-    z-index:4800;
-
-    pointer-events:none;
-
-    font-size:30px;
-
-    animation:
-        kissFly 1.8s forwards;
-}
-
-@keyframes kissFly{
-
-    from{
-        opacity:0;
-
-        transform:
-            translateY(0)
-            scale(.3);
-    }
-
-    15%{
-        opacity:1;
-    }
-
-    to{
-        opacity:0;
-
-        transform:
-            translate(
-                var(--x),
-                -85vh
-            )
-            rotate(var(--r))
-            scale(1.4);
-    }
-}
-
-
-/* =========================================================
    SPARKLES
 ========================================================= */
 
 .spark{
+
     position:fixed;
 
-    z-index:6000;
+    z-index:11000;
 
     pointer-events:none;
 
@@ -1730,10 +1433,11 @@ section{
 ========================================================= */
 
 .reveal{
+
     opacity:0;
 
     transform:
-        translateY(45px);
+        translateY(40px);
 
     transition:
         1s
@@ -1741,6 +1445,7 @@ section{
 }
 
 .reveal.visible{
+
     opacity:1;
 
     transform:none;
@@ -1752,18 +1457,20 @@ section{
 ========================================================= */
 
 footer{
+
     position:relative;
 
     z-index:50;
 
     padding:
-        100px 20px
-        140px;
+        80px 20px
+        130px;
 
     text-align:center;
 }
 
 .footer-title{
+
     color:#8d3b54;
 
     font-family:"Great Vibes",cursive;
@@ -1773,6 +1480,7 @@ footer{
 }
 
 footer p{
+
     margin-top:8px;
 
     color:#754252;
@@ -1790,71 +1498,83 @@ footer p{
 @media(max-width:760px){
 
     .nav{
+
         width:
             calc(100% - 12px);
 
-        top:8px;
+        top:7px;
 
         justify-content:center;
     }
 
     .nav button{
-        padding:7px 8px;
+
+        padding:
+            7px 8px;
+
         font-size:11px;
     }
 
+    .hero{
+
+        padding-top:110px;
+    }
+
     .hero-paper{
+
         padding:
-            65px 20px
+            60px 20px
             55px;
     }
 
     .hero h1{
+
         font-size:78px;
     }
 
     .hero h2{
+
         font-size:27px;
     }
 
     .hero-description{
+
         font-size:18px;
     }
 
-    .kitty-grid,
+    .note-grid,
     .love-grid{
+
         grid-template-columns:1fr;
     }
 
     .letter{
+
         padding:
-            60px 24px;
+            55px 23px;
     }
 
     .letter-content{
+
         font-size:19px;
+
+        line-height:1.65;
     }
 
     section{
+
         padding:
-            80px 12px;
+            65px 12px;
     }
 
-    .kitten{
-        transform:scale(.7);
-        opacity:.75;
+    .modal-card h3{
+
+        font-size:48px;
     }
 
-    .k1,
-    .k3,
-    .k5{
-        left:-28px;
-    }
+    .modal-card p{
 
-    .k2,
-    .k4,
-    .k6{
-        right:-28px;
+        font-size:19px;
     }
 
 }
@@ -1865,7 +1585,6 @@ footer p{
 
 <body>
 
-
 <div class="page">
 
 
@@ -1875,160 +1594,17 @@ footer p{
 
 <nav class="nav">
 
-    <button onclick="goTo('home')">
-        Home
-    </button>
+    <button onclick="goTo('home')">Home</button>
 
-    <button onclick="goTo('letter')">
-        Letter
-    </button>
+    <button onclick="goTo('letter')">Letter</button>
 
-    <button onclick="goTo('kittens')">
-        Kittens
-    </button>
+    <button onclick="goTo('notes')">Notes</button>
 
-    <button onclick="goTo('love')">
-        Love
-    </button>
+    <button onclick="goTo('love')">Love</button>
 
-    <button onclick="goTo('secret')">
-        Secret
-    </button>
+    <button onclick="goTo('secret')">Secret</button>
 
 </nav>
-
-
-<!-- =====================================================
-     FLOATING KITTENS
-===================================================== -->
-
-<div class="kitten k1">
-
-    <div class="cat-head">
-
-        <div class="cat-ear left"></div>
-        <div class="cat-ear right"></div>
-
-        <div class="cat-eye left"></div>
-        <div class="cat-eye right"></div>
-
-        <div class="cat-nose"></div>
-        <div class="cat-mouth"></div>
-
-        <div class="whisker w1"></div>
-        <div class="whisker w2"></div>
-        <div class="whisker w3"></div>
-        <div class="whisker w4"></div>
-
-    </div>
-
-    <div class="cat-bow">🎀</div>
-    <div class="cat-heart">♡</div>
-
-</div>
-
-
-<div class="kitten k2">
-
-    <div class="cat-head">
-
-        <div class="cat-ear left"></div>
-        <div class="cat-ear right"></div>
-
-        <div class="cat-eye left"></div>
-        <div class="cat-eye right"></div>
-
-        <div class="cat-nose"></div>
-        <div class="cat-mouth"></div>
-
-    </div>
-
-    <div class="cat-bow">🌸</div>
-
-</div>
-
-
-<div class="kitten k3">
-
-    <div class="cat-head">
-
-        <div class="cat-ear left"></div>
-        <div class="cat-ear right"></div>
-
-        <div class="cat-eye left"></div>
-        <div class="cat-eye right"></div>
-
-        <div class="cat-nose"></div>
-        <div class="cat-mouth"></div>
-
-    </div>
-
-    <div class="cat-bow">🎀</div>
-    <div class="cat-flower">🌷</div>
-
-</div>
-
-
-<div class="kitten k4">
-
-    <div class="cat-head">
-
-        <div class="cat-ear left"></div>
-        <div class="cat-ear right"></div>
-
-        <div class="cat-eye left"></div>
-        <div class="cat-eye right"></div>
-
-        <div class="cat-nose"></div>
-        <div class="cat-mouth"></div>
-
-    </div>
-
-    <div class="cat-bow">🌹</div>
-    <div class="cat-heart">♥</div>
-
-</div>
-
-
-<div class="kitten k5">
-
-    <div class="cat-head">
-
-        <div class="cat-ear left"></div>
-        <div class="cat-ear right"></div>
-
-        <div class="cat-eye left"></div>
-        <div class="cat-eye right"></div>
-
-        <div class="cat-nose"></div>
-        <div class="cat-mouth"></div>
-
-    </div>
-
-    <div class="cat-bow">💗</div>
-
-</div>
-
-
-<div class="kitten k6">
-
-    <div class="cat-head">
-
-        <div class="cat-ear left"></div>
-        <div class="cat-ear right"></div>
-
-        <div class="cat-eye left"></div>
-        <div class="cat-eye right"></div>
-
-        <div class="cat-nose"></div>
-        <div class="cat-mouth"></div>
-
-    </div>
-
-    <div class="cat-bow">🎀</div>
-    <div class="cat-flower">🌸</div>
-
-</div>
 
 
 <div id="floating"></div>
@@ -2040,40 +1616,36 @@ footer p{
 
 <main id="home" class="hero">
 
-    <div class="hero-paper">
+<div class="hero-paper">
 
-        <div class="ribbon">
-            🎀
-        </div>
+    <div class="crown">👑</div>
 
-        <div class="hero-small">
-            SEPTEMBER 7 · 2026
-        </div>
-
-        <h1>
-            Six Months
-        </h1>
-
-        <h2>
-            of something very precious ♡
-        </h2>
-
-        <p class="hero-description">
-
-            A little pink world made for you —
-            filled with flowers, ribbons, tiny kittens,
-            soft words and a ridiculous amount of love.
-
-        </p>
-
-        <button
-            class="btn"
-            onclick="goTo('letter')"
-        >
-            Open My Heart ♡
-        </button>
-
+    <div class="hero-small">
+        SEPTEMBER 7 · 2026
     </div>
+
+    <h1>
+        Six Months
+    </h1>
+
+    <h2>
+        and a lifetime to go... ♡
+    </h2>
+
+    <p class="hero-description">
+        A little corner of the internet made for you —
+        filled with flowers, kittens, tiny memories,
+        soft words and an unreasonable amount of love.
+    </p>
+
+    <button
+        class="btn"
+        onclick="goTo('letter')"
+    >
+        Open My Heart ♡
+    </button>
+
+</div>
 
 </main>
 
@@ -2089,11 +1661,11 @@ footer p{
 <div class="heading">
 
     <small>
-        written softly, meant completely
+        the letter
     </small>
 
     <h2>
-        For You, Ananta
+        For My Forever ♡
     </h2>
 
 </div>
@@ -2113,93 +1685,113 @@ footer p{
     <div class="letter-content">
 
         <p>
-            Six months may look like a small number written on a calendar,
-            but somehow, when I think of you, it feels like a whole little
-            universe of its own. A universe made of your name, your smile,
-            your presence, and all those quiet feelings that are sometimes
-            too beautiful to fit into words. Somewhere between ordinary
-            days and ordinary conversations, you became something incredibly
-            special to me — someone my heart simply feels at home with.
+            I hope you know how much you truly mean to me.
+            Today isn't just another date on the calendar —
+            it's a little reminder of <strong>us</strong>, of
+            everything we've shared, everything we've learned,
+            and every little moment that brought us closer.
+            Six months with you may sound like a small amount
+            of time, but somehow you've managed to become such
+            a beautiful and important part of my life.
         </p>
 
         <p>
-            There is a kind of beauty in having one person who can make
-            the smallest things feel meaningful. A message from you can
-            brighten an ordinary moment. Your name appearing on my screen
-            can bring a smile before I even realise I am smiling. And
-            sometimes, just thinking about you is enough to make the world
-            feel a little softer around the edges.
+            When I look back at these six months, I realise how
+            much you have changed me. You have taught me what it
+            feels like to genuinely care for someone, understand
+            them, be patient with them, and love someone with my
+            whole heart. You have brought a kind of happiness
+            into my life that I never knew I was missing.
+            Without you, I know I would be a very different
+            person today.
         </p>
 
         <p>
-            I love you for all the little things that make you you. The
-            warmth in the way you care, the sweetness in the way you love,
-            the little details that make your personality impossible to
-            replace. I love that you are not some perfectly written
-            character from a story. You are real, wonderfully yourself,
-            and that is exactly what makes you so precious to me.
+            And yesterday made me realise all of that again.
+            You didn't just tell me that you love me —
+            <strong>you showed me.</strong> You proved your love
+            through your actions, and that meant more to me than
+            I could ever properly explain. It reminded me that
+            what we have isn't just a collection of pretty words.
+            It's something we both keep choosing, something we
+            both care about, and something that genuinely matters
+            to both of us.
         </p>
 
         <p>
-            If I could give you one thing and make sure you carried it
-            with you wherever you went, I would give you the feeling of
-            being completely cherished. I would want you to wake up knowing
-            that you matter, to look at yourself and remember that you are
-            beautiful in all the ways that actually count, and to know that
-            your presence has brought a kind of warmth into my life that I
-            never want to take for granted.
+            I want you to know that I choose you too. Not only
+            on the days when everything is perfect, but also on
+            the confusing days, the difficult moments, the
+            misunderstandings and everything in between. I want
+            to keep learning you, understanding you, growing
+            with you and becoming a better person for us.
         </p>
 
         <p>
-            I don't think love always needs the loudest words. Sometimes
-            love is simply remembering someone's little details. Sometimes
-            it is wanting to share a random thought with them. Sometimes
-            it is seeing something beautiful and immediately thinking,
-            “I wish she could see this too.” And somehow, you have become
-            that person for me — the person my mind naturally turns towards
-            when something feels beautiful, funny, exciting or simply worth
-            sharing.
+            You are my favourite person to talk to, my favourite
+            name to see appear on my phone, my favourite person
+            to share random thoughts with, and somehow even after
+            all this time, you still manage to make ordinary
+            moments feel special. There is a place in my heart
+            that feels completely yours, and I hope you always
+            know how precious that place is.
         </p>
 
         <p>
-            You have a place in my heart that feels wonderfully yours.
-            Not because I had to make room for it, but because somehow it
-            appeared naturally, quietly and beautifully. And the more I
-            know you, the more grateful I feel for that little place you
-            hold in my life.
+            I hope you stay beside me like this. I hope we keep
+            laughing at stupid things, annoying each other for
+            absolutely no reason, sharing our little moments,
+            fixing things when they go wrong and celebrating
+            every milestone together. I don't want these six
+            months to simply become a memory — I want them to be
+            the beginning of many more chapters of <strong>us.</strong>
         </p>
 
         <p>
-            I hope you never underestimate how loved you are. I hope you
-            know that you deserve tenderness, patience, laughter, flowers,
-            pretty skies, peaceful mornings and all the tiny beautiful
-            things that make life feel special. And whenever life gets
-            busy, I hope there is always a small part of you that remembers
-            that somewhere, someone is looking at your existence with an
-            enormous amount of affection.
+            Please keep being the person who makes ordinary days
+            feel special. And whenever life gets difficult, I hope
+            we remember why we started and choose to understand
+            each other instead of giving up on each other.
         </p>
 
         <p>
-            Six months with you has given the word “us” a meaning that I
-            genuinely treasure. And if there is one thing I want to keep
-            saying, without making it complicated or dramatic, it is simply
-            this: I am so incredibly happy that it is you.
+            I hope you always stay with me like this. I don't want
+            you to suddenly disappear from my life one day and
+            leave me behind. I want us to keep walking together,
+            keep growing together, and keep making beautiful little
+            memories together for as long as life allows us to.
         </p>
 
         <p>
-            You are one of the softest thoughts in my mind, one of the
-            sweetest names in my heart, and one of the most beautiful parts
-            of my world.
+            My love for you isn't something I can measure. It's
+            hidden in the smallest things — in the random moments
+            when I think of you, in the way your happiness matters
+            to me, in the little details I remember about you,
+            and in the way even a simple conversation with you
+            can make my entire day better.
         </p>
 
         <p>
-            So today, on our six months, I just want to leave you with
-            something simple and completely honest —
-            <strong>
-                I love you, Ananta.
-            </strong>
-            More softly than words can explain, and more deeply than this
-            little page could ever hold.
+            Thank you for coming into my life. Thank you for every
+            smile, every conversation, every little effort, every
+            memory, and every time you have made me feel loved.
+            Thank you for being yourself. And thank you for proving
+            your love to me not only through words, but through
+            the things you do.
+        </p>
+
+        <p>
+            So today, on our six months, I just want to say this
+            as simply and honestly as I can:
+            <strong>I love you, Ananta.</strong>
+            I am so incredibly happy that it is you, and if I could
+            choose again, I would still choose you.
+        </p>
+
+        <p>
+            I don't know exactly what the future will look like,
+            but I know one thing —
+            <strong>I want you in it.</strong>
         </p>
 
     </div>
@@ -2217,161 +1809,100 @@ footer p{
 
 
 <!-- =====================================================
-     KITTENS
+     NOTES
 ===================================================== -->
 
-<section id="kittens">
+<section id="notes">
 
 <div class="container reveal">
 
 <div class="heading">
 
     <small>
-        tiny messages hiding inside
+        little notes for you
     </small>
 
     <h2>
-        Kitty Garden 🐾
+        A Few Things ♡
     </h2>
 
+</div>
+
+
+<div class="note-grid">
+
+
+<div class="note" onclick="openNote(0)">
+
+    <div class="note-icon">
+        🐱🎀
+    </div>
+
+    <h3>
+        A Little Reminder
+    </h3>
+
     <p>
-        Every little kitty has a soft message waiting for you.
+        You are so loved, so cherished,
+        and so incredibly special.
+        Never forget that.
     </p>
 
-</div>
+    <br>
 
-
-<div class="kitty-grid">
-
-
-<!-- CARD 1 -->
-
-<div
-class="note-card"
-onclick="openNote(0)"
->
-
-<div class="mini-cat">
-
-    <div class="cat-head">
-
-        <div class="cat-ear left"></div>
-        <div class="cat-ear right"></div>
-
-        <div class="cat-eye left"></div>
-        <div class="cat-eye right"></div>
-
-        <div class="cat-nose"></div>
-        <div class="cat-mouth"></div>
-
-    </div>
-
-    <div class="cat-bow">
-        🎀
-    </div>
-
-</div>
-
-<h3>
-    A Tiny Reminder
-</h3>
-
-<p>
-    You are much more loved than
-    this little page could ever explain.
-</p>
-
-<span class="tap">
-    tap me ♡
-</span>
+    <button class="btn">
+        Read This ♡
+    </button>
 
 </div>
 
 
-<!-- CARD 2 -->
+<div class="note" onclick="openNote(1)">
 
-<div
-class="note-card"
-onclick="openNote(1)"
->
-
-<div class="mini-cat">
-
-    <div class="cat-head">
-
-        <div class="cat-ear left"></div>
-        <div class="cat-ear right"></div>
-
-        <div class="cat-eye left"></div>
-        <div class="cat-eye right"></div>
-
-        <div class="cat-nose"></div>
-        <div class="cat-mouth"></div>
-
+    <div class="note-icon">
+        🌸🐱
     </div>
 
-    <div class="cat-bow">
-        🌸
-    </div>
+    <h3>
+        For My Favourite Girl
+    </h3>
 
-</div>
+    <p>
+        You somehow became one of
+        the sweetest parts of my
+        everyday life.
+    </p>
 
-<h3>
-    For My Girl
-</h3>
+    <br>
 
-<p>
-    If I could bottle one feeling
-    for you, it would be being cherished.
-</p>
-
-<span class="tap">
-    tap me ♡
-</span>
+    <button class="btn">
+        Read This ♡
+    </button>
 
 </div>
 
 
-<!-- CARD 3 -->
+<div class="note" onclick="openNote(2)">
 
-<div
-class="note-card"
-onclick="openNote(2)"
->
-
-<div class="mini-cat">
-
-    <div class="cat-head">
-
-        <div class="cat-ear left"></div>
-        <div class="cat-ear right"></div>
-
-        <div class="cat-eye left"></div>
-        <div class="cat-eye right"></div>
-
-        <div class="cat-nose"></div>
-        <div class="cat-mouth"></div>
-
+    <div class="note-icon">
+        🐱🌷
     </div>
 
-    <div class="cat-bow">
-        🌷
-    </div>
+    <h3>
+        One More Thing
+    </h3>
 
-</div>
+    <p>
+        I hope you never forget how
+        deeply your presence matters
+        to me.
+    </p>
 
-<h3>
-    One More Thing
-</h3>
+    <br>
 
-<p>
-    You somehow became one of my
-    favourite thoughts without trying.
-</p>
-
-<span class="tap">
-    tap me ♡
-</span>
+    <button class="btn">
+        Read This ♡
+    </button>
 
 </div>
 
@@ -2384,7 +1915,7 @@ onclick="openNote(2)"
 
 
 <!-- =====================================================
-     LOVE INTERACTIONS
+     LOVE
 ===================================================== -->
 
 <section id="love">
@@ -2398,11 +1929,12 @@ onclick="openNote(2)"
     </small>
 
     <h2>
-        A Little More Love
+        A Little More Love ♡
     </h2>
 
     <p>
-        Because one page obviously wasn't enough.
+        Because apparently six months required
+        an entire collection of unnecessary buttons.
     </p>
 
 </div>
@@ -2410,8 +1942,6 @@ onclick="openNote(2)"
 
 <div class="love-grid">
 
-
-<!-- HUG -->
 
 <div class="love-card">
 
@@ -2424,8 +1954,9 @@ onclick="openNote(2)"
     </h3>
 
     <p>
-        Press this whenever you want
-        a tiny digital hug.
+        Whenever you need one,
+        this little button sends
+        one straight to you.
     </p>
 
     <button
@@ -2438,8 +1969,6 @@ onclick="openNote(2)"
 </div>
 
 
-<!-- KISS -->
-
 <div class="love-card">
 
     <div class="love-icon">
@@ -2451,8 +1980,9 @@ onclick="openNote(2)"
     </h3>
 
     <p>
-        One button and suddenly
-        the whole screen gets cute.
+        One tiny button and suddenly
+        the whole screen gets
+        unnecessarily romantic.
     </p>
 
     <button
@@ -2465,8 +1995,6 @@ onclick="openNote(2)"
 </div>
 
 
-<!-- FLOWER -->
-
 <div class="love-card">
 
     <div class="love-icon">
@@ -2478,7 +2006,7 @@ onclick="openNote(2)"
     </h3>
 
     <p>
-        A little flower for someone
+        A little flower for the girl
         who deserves pretty things.
     </p>
 
@@ -2494,8 +2022,6 @@ onclick="openNote(2)"
 
 </div>
 
-
-<!-- LOVE METER -->
 
 <div class="meter-box">
 
@@ -2532,8 +2058,8 @@ onclick="openNote(2)"
         font-family:'Cormorant Garamond',serif;
         font-size:18px;
     ">
-        Apparently the meter broke because
-        love doesn't have a maximum. ♡
+        It broke at 100%... apparently there is
+        no maximum for this one. ♡
     </p>
 
 </div>
@@ -2544,7 +2070,7 @@ onclick="openNote(2)"
 
 
 <!-- =====================================================
-     FLOWER SECTION
+     FLOWER
 ===================================================== -->
 
 <section>
@@ -2582,9 +2108,8 @@ onclick="openNote(2)"
 
     </div>
 
-
     <button
-        class="btn light"
+        class="btn"
         onclick="bloomFlower()"
     >
         Make It Bloom ♡
@@ -2608,7 +2133,7 @@ onclick="openNote(2)"
 <div class="heading">
 
     <small>
-        you found the last corner
+        one final little thing
     </small>
 
     <h2>
@@ -2616,7 +2141,8 @@ onclick="openNote(2)"
     </h2>
 
     <p>
-        There is one final little message waiting inside.
+        You made it all the way here...
+        so you deserve one final message.
     </p>
 
 </div>
@@ -2639,7 +2165,6 @@ onclick="openNote(2)"
         </div>
 
     </div>
-
 
     <button
         class="btn"
@@ -2666,7 +2191,7 @@ onclick="openNote(2)"
     </div>
 
     <p>
-        flowers · ribbons · kittens · sparkles · love
+        six months · countless memories · many more to come
     </p>
 
     <br>
@@ -2721,7 +2246,7 @@ onclick="openNote(2)"
 
 
 <!-- =====================================================
-     HUG SCREEN
+     HUG
 ===================================================== -->
 
 <div
@@ -2759,12 +2284,11 @@ function goTo(id){
 
 
 /* =========================================================
-   FLOATING BACKGROUND
+   FLOATING PARTICLES
 ========================================================= */
 
 const floating =
     document.getElementById("floating");
-
 
 const symbols = [
     "♡",
@@ -2778,7 +2302,6 @@ const symbols = [
     "🦋",
     "💗"
 ];
-
 
 function createFloating(){
 
@@ -2819,15 +2342,12 @@ function createFloating(){
         ()=>element.remove(),
         26000
     );
-
 }
-
 
 setInterval(
     createFloating,
     400
 );
-
 
 for(let i=0;i<25;i++){
 
@@ -2840,47 +2360,6 @@ for(let i=0;i<25;i++){
 
 
 /* =========================================================
-   MOUSE PARALLAX
-========================================================= */
-
-const kittens =
-    document.querySelectorAll(".kitten");
-
-
-document.addEventListener(
-    "mousemove",
-    function(e){
-
-        const x =
-            e.clientX /
-            window.innerWidth -
-            .5;
-
-        const y =
-            e.clientY /
-            window.innerHeight -
-            .5;
-
-        kittens.forEach(
-            (cat,index)=>{
-
-                const amount =
-                    5+(index%4)*3;
-
-                cat.style.marginLeft =
-                    x*amount+"px";
-
-                cat.style.marginTop =
-                    y*amount+"px";
-
-            }
-        );
-
-    }
-);
-
-
-/* =========================================================
    CLICK SPARKLES
 ========================================================= */
 
@@ -2890,7 +2369,7 @@ document.addEventListener(
 
         if(
             e.target.closest("button") ||
-            e.target.closest(".note-card") ||
+            e.target.closest(".note") ||
             e.target.closest(".envelope")
         ){
 
@@ -2945,7 +2424,7 @@ document.addEventListener(
 
 
 /* =========================================================
-   REVEAL ON SCROLL
+   SCROLL REVEAL
 ========================================================= */
 
 const observer =
@@ -2972,7 +2451,6 @@ const observer =
         }
     );
 
-
 document
     .querySelectorAll(".reveal")
     .forEach(
@@ -2983,7 +2461,7 @@ document
 
 
 /* =========================================================
-   KITTY NOTES
+   NOTES
 ========================================================= */
 
 const notes = [
@@ -2993,7 +2471,7 @@ const notes = [
             "A Little Reminder ♡",
 
         text:
-            "I hope you always remember how wonderfully special you are. You deserve soft mornings, genuine smiles, beautiful little moments and a heart that feels completely cherished. If this tiny page could leave you with one feeling, I would want it to be the feeling of knowing that you are deeply, genuinely and endlessly loved."
+            "I hope you always remember how wonderfully special you are. You deserve soft mornings, genuine smiles, beautiful little moments and a heart that feels completely cherished. If this tiny page could leave you with one feeling, I would want it to be the feeling of knowing that you are deeply loved and genuinely appreciated."
     },
 
     {
@@ -3001,7 +2479,7 @@ const notes = [
             "For My Favourite Girl 🌸",
 
         text:
-            "There is something about you that feels different in the sweetest way. Your presence has a warmth that makes ordinary moments feel prettier, and your name somehow became one of my favourite things to see. I hope you know how precious you are, not because of anything you have to do, but simply because you are you."
+            "There is something about you that feels different in the sweetest way. Your presence has a warmth that makes ordinary moments feel prettier, and your name somehow became one of my favourite things to see. Six months later, I still feel incredibly lucky that I get to call you mine."
     },
 
     {
@@ -3009,11 +2487,10 @@ const notes = [
             "One More Little Thing ♡",
 
         text:
-            "If I could keep one feeling from these six months forever, it would be the feeling of having you in my life. Not one particular photograph or one particular sentence — just that quiet happiness of knowing there is someone whose presence makes the world feel a little softer. That someone is you."
+            "If I could keep one feeling from these six months forever, it would simply be the feeling of having you in my life. Not one particular photograph or one particular sentence — just that quiet happiness of knowing there is someone whose presence makes my world feel a little softer."
     }
 
 ];
-
 
 function openNote(index){
 
@@ -3027,17 +2504,13 @@ function openNote(index){
 
     document.getElementById("modal")
         .classList.add("show");
-
 }
-
 
 function closeModal(){
 
     document.getElementById("modal")
         .classList.remove("show");
-
 }
-
 
 document
     .getElementById("modal")
@@ -3101,7 +2574,7 @@ function createHeartBurst(){
             const heart =
                 document.createElement("span");
 
-            heart.className="kiss";
+            heart.className="spark";
 
             heart.textContent =
                 hearts[
@@ -3113,27 +2586,27 @@ function createHeartBurst(){
             heart.style.left =
                 Math.random()*100+"%";
 
-            heart.style.bottom =
-                "-20px";
+            heart.style.top =
+                Math.random()*100+"%";
 
             heart.style.setProperty(
                 "--x",
-                (Math.random()*250-125)+"px"
+                (Math.random()*220-110)+"px"
             );
 
             heart.style.setProperty(
-                "--r",
-                (Math.random()*100-50)+"deg"
+                "--y",
+                (Math.random()*220-110)+"px"
             );
 
             document.body.appendChild(heart);
 
             setTimeout(
                 ()=>heart.remove(),
-                1900
+                1000
             );
 
-        },i*45);
+        },i*35);
 
     }
 
@@ -3161,7 +2634,7 @@ function sendKiss(){
             const kiss =
                 document.createElement("span");
 
-            kiss.className="kiss";
+            kiss.className="float";
 
             kiss.textContent =
                 kisses[
@@ -3186,11 +2659,14 @@ function sendKiss(){
                 (Math.random()*100-50)+"deg"
             );
 
+            kiss.style.animationDuration =
+                "2s";
+
             document.body.appendChild(kiss);
 
             setTimeout(
                 ()=>kiss.remove(),
-                2000
+                2200
             );
 
         },i*45);
@@ -3207,14 +2683,10 @@ function sendKiss(){
 function measureLove(){
 
     const fill =
-        document.getElementById(
-            "meterFill"
-        );
+        document.getElementById("meterFill");
 
     const number =
-        document.getElementById(
-            "meterNumber"
-        );
+        document.getElementById("meterNumber");
 
     fill.style.width="100%";
 
@@ -3247,7 +2719,7 @@ function measureLove(){
 
 
 /* =========================================================
-   FLOWER BLOOM
+   FLOWER
 ========================================================= */
 
 function bloomFlower(){
@@ -3260,7 +2732,6 @@ function bloomFlower(){
     void flower.offsetWidth;
 
     flower.classList.add("bloom");
-
 
     for(let i=0;i<30;i++){
 
@@ -3309,9 +2780,7 @@ function bloomFlower(){
                 (Math.random()*180-90)+"px"
             );
 
-            document.body.appendChild(
-                particle
-            );
+            document.body.appendChild(particle);
 
             setTimeout(
                 ()=>particle.remove(),
@@ -3331,13 +2800,10 @@ function bloomFlower(){
 
 let secretOpened=false;
 
-
 function openSecret(){
 
     const envelope =
-        document.getElementById(
-            "envelope"
-        );
+        document.getElementById("envelope");
 
     envelope.classList.add("open");
 
@@ -3355,7 +2821,7 @@ function openSecret(){
             document.getElementById(
                 "modalText"
             ).textContent =
-                "If I could put one feeling inside this envelope and give it to you, it would simply be this: I hope you always know how precious you are to me. This little website will eventually end, the flowers will stop blooming and the kittens will stop floating around the screen — but the reason I made every little part of it will remain the same. You are someone incredibly special to me, and I hope these six months are only the beginning of many more beautiful pages we get to write together. Happy six months, my love. ♡";
+                "Six months ago, I didn't know exactly how many little memories we would make, how many random conversations we would have, or how much you would come to mean to me. And now, looking at everything we've shared, I honestly wouldn't trade any of it. I hope you stay beside me like this, through the silly days, the difficult days and all the beautiful ones in between. I hope we keep choosing each other, keep understanding each other and keep writing this little story together. The website may end here, but I hope our story doesn't. Happy Six Months, my love. ♡";
 
             document.getElementById(
                 "modal"
@@ -3371,7 +2837,7 @@ function openSecret(){
 
 
 /* =========================================================
-   ESCAPE KEY
+   ESCAPE
 ========================================================= */
 
 document.addEventListener(
@@ -3384,21 +2850,6 @@ document.addEventListener(
 
     }
 );
-
-
-/* =========================================================
-   RANDOM EXTRA FLOWERS
-========================================================= */
-
-setInterval(()=>{
-
-    if(Math.random()>.45){
-
-        createFloating();
-
-    }
-
-},700);
 
 </script>
 
